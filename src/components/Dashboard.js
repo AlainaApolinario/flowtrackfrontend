@@ -26,7 +26,7 @@ const Dashboard = () => {
 
   return (
     <div className="dashboard-container fade-in">
-      <h1 style={{ marginBottom: '0.2em' }}>EnergyTrack</h1>
+      <h1 style={{ marginBottom: '0.2em' }}>FlowTrack Energy</h1>
       <p style={{ color: '#1976d2', marginBottom: '2em', fontSize: '1.1em' }}>
         Real-time monitoring of your energy usage
       </p>
