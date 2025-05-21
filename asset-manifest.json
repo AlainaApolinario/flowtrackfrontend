@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/flowtrackfrontend/static/css/main.22831e1a.css",
+    "main.js": "/flowtrackfrontend/static/js/main.75d756be.js",
+    "static/js/453.34a63004.chunk.js": "/flowtrackfrontend/static/js/453.34a63004.chunk.js",
+    "index.html": "/flowtrackfrontend/index.html",
+    "main.22831e1a.css.map": "/flowtrackfrontend/static/css/main.22831e1a.css.map",
+    "main.75d756be.js.map": "/flowtrackfrontend/static/js/main.75d756be.js.map",
+    "453.34a63004.chunk.js.map": "/flowtrackfrontend/static/js/453.34a63004.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.22831e1a.css",
+    "static/js/main.75d756be.js"
+  ]
+}
