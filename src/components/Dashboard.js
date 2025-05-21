@@ -1,10 +1,14 @@
-// src/components/Dashboard.js
 import React, { useEffect, useState } from 'react';
 import DataCard from './DataCard';
 import DataTable from './DataTable';
 import { getEnergyData } from '../api/energyService';
 import './Dashboard.css';
-import { FaBolt, FaTachometerAlt, FaChargingStation, FaBatteryFull } from 'react-icons/fa';
+import {
+  FaBolt,
+  FaTachometerAlt,
+  FaChargingStation,
+  FaBatteryFull
+} from 'react-icons/fa';
 
 const Dashboard = () => {
   const [latestData, setLatestData] = useState({});
@@ -13,21 +17,39 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await getEnergyData();
-        setHistory(data);
-        if (data.length > 0) setLatestData(data[0]);
+        const rawData = await getEnergyData();
+        const dataWithTimestamp = {
+          ...rawData,
+          timestamp: new Date().toISOString()
+        };
+
+        setLatestData(dataWithTimestamp);
+        setHistory(prev => [...prev, dataWithTimestamp]); // Append to history
       } catch (err) {
-        console.error("Failed to load energy data", err);
+        console.error('Failed to load energy data', err);
       }
     };
 
+    // Fetch immediately
     fetchData();
+
+    // Fetch every 5 seconds
+    const interval = setInterval(fetchData, 5000);
+
+    // Cleanup on component unmount
+    return () => clearInterval(interval);
   }, []);
 
   return (
     <div className="dashboard-container fade-in">
       <h1 style={{ marginBottom: '0.2em' }}>FlowTrack Energy</h1>
-      <p style={{ color: '#1976d2', marginBottom: '2em', fontSize: '1.1em' }}>
+      <p
+        style={{
+          color: '#1976d2',
+          marginBottom: '2em',
+          fontSize: '1.1em'
+        }}
+      >
         Real-time monitoring of your energy usage
       </p>
       <div className="card-grid">

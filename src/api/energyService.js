@@ -1,14 +1,10 @@
-// src//energyService.js
-import axios from 'axios';
-
-const API_URL = "http://localhost:8000/api/energy/";
+// src/api/energyService.js
 
 export const getEnergyData = async () => {
-  try {
-    const response = await axios.get(API_URL);
-    return response.data;
-  } catch (error) {
-    console.error("Error fetching energy data:", error);
-    throw error;
+  const response = await fetch("https://flowtrackbackend.onrender.com/data");
+  if (!response.ok) {
+    throw new Error("Failed to fetch energy data");
   }
+  const data = await response.json();
+  return data;  // will be a single object
 };
